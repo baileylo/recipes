@@ -29,11 +29,8 @@
             }
         },
         computed: {
-            deleteUrl: function () {
-                return `/my-recipes/${this.recipe.id}/delete`
-            },
             viewUrl: function () {
-                return `/my-recipes/${this.recipe.id}/`;
+                return `/recipes/${this.recipe.id}/`;
             },
             editUrl: function () {
                 return `/my-recipes/${this.recipe.id}/edit`;

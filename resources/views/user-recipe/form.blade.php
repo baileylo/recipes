@@ -69,8 +69,8 @@
 <div class="row">
     <div class="col-md-12 text-md-right">
         <p class="">
-            <button type="submit" class="btn btn-primary">{{ $button }}</button>
             <a href="{{ route('my-recipes') }}" class="btn btn-warning">Cancel</a>
+            <button type="submit" class="btn btn-primary">{{ $button }}</button>
         </p>
     </div>
 </div>

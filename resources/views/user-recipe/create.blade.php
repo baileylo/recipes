@@ -19,13 +19,7 @@
             {!! csrf_field() !!}
             <div class="row">
                 <div class="offset-lg-2 col-lg-8">
-
-                    <?php var_dump($errors->toArray()); ?>
-
                     <fieldset>
-                        <div style="position: absolute; right: 0; top:0;">
-                            <small><a href="#">Import From URL</a></small>
-                        </div>
                         <legend>Add Recipe</legend>
 
                         @include('user-recipe.form', ['recipe' => new \App\Recipe(), 'button' => 'Create', 'errors' => $errors])
