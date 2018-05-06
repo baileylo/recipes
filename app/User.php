@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $casts = [
+        'id' => 'int'
+    ];
+
     public function recipes()
     {
         return $this->hasMany(Recipe::class);
