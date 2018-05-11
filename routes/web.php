@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/img/{path}', 'ImageController@show')->where('path', '.*');
+
 Route::get('recipes', 'RecipeController@index');
 Route::get('recipes/{recipe}', 'RecipeController@show')->name('recipes.show');
 Route::get('my-recipes', 'UserRecipeController@index')->name('my-recipes');
