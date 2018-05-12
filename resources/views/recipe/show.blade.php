@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <header>
             <div class="row">
-                <div class="col-md-12" style="background-image: url(https://food.fnr.sndimg.com/content/dam/images/food/fullset/2003/9/29/0/ig1a07_roasted_potatoes.jpg); background-size: cover; height: 690px; width: 1024px;position: relative;padding:0">
+                <div class="col-md-12" style="background-image: url({{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop') }}); background-size: cover; height: 690px; width: 1024px;position: relative;padding:0">
                     <div style="position: absolute; bottom: 0;background: black;opacity: .7;width:100%;color:white;text-align: right;padding-right:15px">
                         <h1>{{ $recipe->title }}</h1>
                         @if ($recipe->source)

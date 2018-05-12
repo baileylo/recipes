@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use App\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserRecipeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -20,10 +16,15 @@ class UserRecipeController extends Controller
 
     public function index(Request $request)
     {
-        // lets show a paginated list of all of the user's
-        // recipes... this should be the same as other page...
+        $recipes = $request->user()->recipes->load('lede', 'thumbnail')->map(function (Recipe $recipe) {
+            $data = $recipe->toArray();
+            $data['image_url'] = $recipe->thumbnail_url->width('600');
+
+            return $data;
+        });
+
         return view('user-recipe.index', [
-            'recipes' => $request->user()->recipes
+            'recipes' => $recipes
         ]);
     }
 
@@ -60,7 +61,7 @@ class UserRecipeController extends Controller
             'source'           => 'string|nullable|max:255',
             'serves'           => 'integer|min:1',
             'cooking_time'     => 'string|nullable|max:255',
-            'oven_temperature' => 'integer|min:1',
+            'oven_temperature' => 'integer|nullable|min:1',
             'ingredients'      => 'string|required',
             'directions'       => 'string|required',
         ]);

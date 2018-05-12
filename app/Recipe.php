@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Service\RenderableImage;
 use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
@@ -22,9 +23,11 @@ class Recipe extends Model
     ];
 
     protected $casts = [
-        'user_id' => 'int',
-        'serves' => 'int',
-        'oven_temperature' => 'int'
+        'user_id'            => 'int',
+        'serves'             => 'int',
+        'oven_temperature'   => 'int',
+        'lede_image_id'      => 'int',
+        'thumbnail_image_id' => 'int'
     ];
 
     /**
@@ -32,7 +35,7 @@ class Recipe extends Model
      *
      * @var array
      */
-    protected $appends = ['image_url'];
+    protected $appends = ['image_url', 'thumbnail_url'];
 
     public function setTitleAttribute($title)
     {
@@ -42,11 +45,35 @@ class Recipe extends Model
 
     public function getImageUrlAttribute()
     {
-        return 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2003/9/29/0/ig1a07_roasted_potatoes.jpg';
+        if ($this->lede) {
+            return new RenderableImage($this->lede->path);
+        }
+
+        return '';
+    }
+
+    public function getThumbnailUrlAttribute()
+    {
+        if (!$this->thumbnail) {
+            return new RenderableImage($this->lede->path);
+        }
+
+        return $this->image_url;
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function thumbnail()
+    {
+        return $this->belongsTo(Image::class, 'thumbnail_image_id');
+    }
+
+    public function lede()
+    {
+        return $this->belongsTo(Image::class, 'lede_image_id');
+    }
+
 }
