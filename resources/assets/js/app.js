@@ -10,6 +10,7 @@ window.Vue = require('vue');
 
 Vue.component('my-recipe-list-item', require('./components/MyRecipeListItem.vue'));
 Vue.component('my-recipe-list', require('./components/MyRecipeList.vue'));
+Vue.component('image-upload', require('./components/ImageUpload.vue'));
 
 const app = new Vue({
     el: '#app',

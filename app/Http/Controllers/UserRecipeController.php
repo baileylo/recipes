@@ -64,7 +64,14 @@ class UserRecipeController extends Controller
             'oven_temperature' => 'integer|nullable|min:1',
             'ingredients'      => 'string|required',
             'directions'       => 'string|required',
+            'image'            => 'image'
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = Image::createFromUpload($request->file('image'), $request->user());
+
+            $recipe->lede()->associate($image);
+        }
 
         $recipe->update($request->only(
             'title',
@@ -97,10 +104,12 @@ class UserRecipeController extends Controller
             'oven_temperature' => 'integer|nullable|min:1',
             'ingredients'      => 'string|required',
             'directions'       => 'string|required',
+            'image'            => 'image'
         ]);
 
         /** @var \App\User $user */
-        $user = $request->user();
+        /** @var \App\Recipe $recipe */
+        $user   = $request->user();
         $recipe = $user->recipes()->create($request->only(
             'title',
             'source',
@@ -111,9 +120,16 @@ class UserRecipeController extends Controller
             'directions'
         ));
 
+        if ($request->hasFile('image')) {
+            $image = Image::createFromUpload($request->file('image'), $request->user());
+
+            $recipe->lede()->associate($image);
+            $recipe->save();
+        }
+
         return redirect()->route('recipes.edit', $recipe)->with('interaction-notification', [
             'status'  => 'success',
-            'message' => "{$recipe->title} recipe Created!"
+            'message' => "{$recipe->title} recipe created!"
         ]);
     }
 

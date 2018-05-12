@@ -15,7 +15,7 @@
         </div>
         @endif
 
-        <form method="POST" action="{{ route('recipes.edit', $recipe) }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('recipes.edit', $recipe) }}" novalidate>
             {!! csrf_field() !!}
             <div class="row">
                 <div class="offset-lg-2 col-lg-8">
