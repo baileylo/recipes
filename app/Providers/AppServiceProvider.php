@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Service\RenderableImage;
 use Illuminate\Support\ServiceProvider;
+use League\Glide\Urls\UrlBuilder;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        RenderableImage::setUrlBuilder($this->app[UrlBuilder::class]);
     }
 
     /**
