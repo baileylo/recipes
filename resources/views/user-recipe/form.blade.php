@@ -21,7 +21,7 @@
 
 <div class="form-row">
     <div class="form-group col-md-12">
-        <image-upload current-src="{{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop') }}"></image-upload>
+        <image-upload @if((string)$recipe->image_url) current-src="{{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop') }}" @endif></image-upload>
     </div>
 </div>
 
