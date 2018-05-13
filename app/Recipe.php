@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Service\NullImage;
 use App\Service\RenderableImage;
 use Illuminate\Database\Eloquent\Model;
 
@@ -49,13 +50,13 @@ class Recipe extends Model
             return new RenderableImage($this->lede->path);
         }
 
-        return '';
+        return new NullImage();
     }
 
     public function getThumbnailUrlAttribute()
     {
-        if (!$this->thumbnail) {
-            return new RenderableImage($this->lede->path);
+        if ($this->thumbnail) {
+            return new RenderableImage($this->thumbnail->path);
         }
 
         return $this->image_url;
