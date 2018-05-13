@@ -18,7 +18,7 @@ class UserRecipeController extends Controller
     {
         $recipes = $request->user()->recipes->load('lede', 'thumbnail')->map(function (Recipe $recipe) {
             $data = $recipe->toArray();
-            $data['image_url'] = $recipe->thumbnail_url->width('600');
+            $data['image_url'] = $recipe->thumbnail_url->w('286')->h(214)->fit('crop')->dpr(2);
 
             return $data;
         });
