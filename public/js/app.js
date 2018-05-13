@@ -47319,6 +47319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -47329,15 +47330,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         viewUrl: function viewUrl() {
-            return '/recipes/' + this.recipe.id + '/';
+            return "/recipes/" + this.recipe.id + "/";
         },
         editUrl: function editUrl() {
-            return '/my-recipes/' + this.recipe.id + '/edit';
+            return "/my-recipes/" + this.recipe.id + "/edit";
         }
-    },
-    mounted: function mounted() {
-        console.log('Component mounted.');
-        console.log(this.recipe);
     }
 });
 
@@ -47351,10 +47348,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-lg-4" }, [
     _c("div", { staticClass: "card", staticStyle: { "max-width": "18rem" } }, [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: { src: _vm.recipe.image_url, alt: _vm.recipe.title }
-      }),
+      _vm.recipe.image_url
+        ? _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: _vm.recipe.image_url, alt: _vm.recipe.title }
+          })
+        : _c("div", {
+            staticStyle: {
+              width: "100%",
+              height: "0",
+              "padding-top": "75%",
+              background: "#ccc"
+            }
+          }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("h5", { staticClass: "card-text" }, [
