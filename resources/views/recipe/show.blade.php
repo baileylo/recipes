@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
+@section('top-padding', '')
+
 @section('content')
-    <div class="container-fluid">
-        <header>
+    <header class="container-fluid">
             <div class="row">
-                <div class="col-md-12" style="background-image: url({{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop') }}); background-size: cover; height: 690px; width: 1024px;position: relative;padding:0">
+                <div class="col-md-12 permalink-lede-image" style="background-image: url({{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop')->dpr(2) }});" >
                     <div style="position: absolute; bottom: 0;background: black;opacity: .7;width:100%;color:white;text-align: right;padding-right:15px">
                         <h1>{{ $recipe->title }}</h1>
                         @if ($recipe->source)
@@ -13,30 +14,32 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4" style="text-align: center">
-                    <h1>{{ $recipe->serves }}</h1>
-                    <small>serves</small>
-                </div>
-                <div class="col-lg-4" style="text-align: center">
-                    <h1>{{ $recipe->cooking_time }}</h1>
-                    <small>cooking time</small>
-                </div>
-                <div class="col-lg-4" style="text-align: center">
-                    <h1>{{ $recipe->oven_temperature?: '&mdash;' }}</h1>
-                    <small>Prehead Oven</small>
-                </div>
+    </header>
+    <section class="container-fluid recipe-view-highlight" style="background: white;border-top-width: 2px; border-bottom-width: 2px; border-color: #fff">
+        <div class="row">
+            <div class="col-lg-4" style="text-align: center">
+                <h1>{{ $recipe->serves }}</h1>
+                <small>serves</small>
             </div>
-        </header>
-        <section>
-            <div class="row">
-                <div class="col-md-4">
-                    {!! nl2br($recipe->ingredients) !!}
-                </div>
-                <div class="col-md-8">
-                    {!! nl2br($recipe->directions) !!}
-                </div>
+            <div class="col-lg-4" style="text-align: center">
+                <h1>{{ $recipe->cooking_time }}</h1>
+                <small>cooking time</small>
             </div>
-        </section>
+            <div class="col-lg-4" style="text-align: center">
+                <h1>{{ $recipe->oven_temperature?: '—' }}</h1>
+                <small>Prehead Oven</small>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                {!! nl2br($recipe->ingredients) !!}
+            </div>
+            <div class="col-md-8">
+                {!! nl2br($recipe->directions) !!}
+            </div>
+        </div>
+    </section>
     </div>
 @endsection
