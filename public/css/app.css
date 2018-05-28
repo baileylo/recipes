@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+/*!
  * Font Awesome Free 5.0.10 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
@@ -14183,5 +14183,17 @@ a.text-dark:focus {
   height: 0;
   padding: 70% 0 0 0;
   position: relative;
+}
+
+.image-upload-target {
+  background-color: white;
+  border: 1px solid #999;
+  font-size: 128px;
+  text-align: center;
+}
+
+.image-upload-target img {
+  max-width: 100%;
+  max-height: 100%;
 }
 

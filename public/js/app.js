@@ -47691,13 +47691,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "rounded",
-        staticStyle: {
-          "background-color": "white",
-          border: "1px solid #999",
-          "font-size": "128px",
-          "text-align": "center"
-        },
+        staticClass: "rounded image-upload-target",
         on: {
           drop: function($event) {
             $event.stopPropagation()
@@ -47723,11 +47717,7 @@ var render = function() {
       },
       [
         _vm.imageData
-          ? _c("img", {
-              ref: "preview",
-              staticStyle: { "max-width": "100%", "max-height": "100%" },
-              attrs: { src: _vm.imageData }
-            })
+          ? _c("img", { ref: "preview", attrs: { src: _vm.imageData } })
           : _vm.currentSrc
             ? _c("img", { attrs: { src: _vm.currentSrc } })
             : _c("p", { staticClass: "align-items-center" }, [

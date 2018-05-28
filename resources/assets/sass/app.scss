@@ -1,6 +1,6 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
 @import "variables";
@@ -28,4 +28,15 @@
   height: 0;
   padding: 70% 0 0 0;
   position: relative;
+}
+
+.image-upload-target {
+  img {
+    max-width: 100%;
+    max-height: 100%
+  }
+  background-color: $body-bg-highlight;
+  border: 1px solid #999;
+  font-size: 128px;
+  text-align: center
 }

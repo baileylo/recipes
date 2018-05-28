@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="rounded" style="background-color:white; border: 1px solid #999;font-size:128px;text-align:center" @drop.stop.prevent="drop" @dragenter.stop.prevent="dragEnter" @dragleave.stop.prevent="dragLeave" @dragover.stop.prevent="" @click="showFileSelector">
-            <img :src="imageData" v-if="imageData" ref="preview" style="max-width: 100%; max-height: 100%">
+        <div class="rounded image-upload-target" @drop.stop.prevent="drop" @dragenter.stop.prevent="dragEnter" @dragleave.stop.prevent="dragLeave" @dragover.stop.prevent="" @click="showFileSelector">
+            <img :src="imageData" v-if="imageData" ref="preview" style="">
             <img :src="currentSrc" v-else-if="currentSrc">
             <p class="align-items-center" v-else="imageData">
                 <i class="fas fa-image"></i>
