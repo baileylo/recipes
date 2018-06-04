@@ -1,6 +1,5 @@
 <template>
-    <div class="col-lg-4">
-        <div class="card" style="max-width: 18rem;">
+        <div class="card">
             <img class="card-img-top" v-if="recipe.image_url"
                  :src="recipe.image_url"
                  :alt="recipe.title">
@@ -18,7 +17,6 @@
                 </small>
             </div>
         </div>
-    </div>
 </template>
 
 <script>

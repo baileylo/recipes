@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <div class="row" v-for="recipes in recipeGroups">
-            <my-recipe-list-item v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" @deleteRecipe="removeRecipe"></my-recipe-list-item>
-        </div>
+    <div class="card-columns">
+        <my-recipe-list-item v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" @deleteRecipe="removeRecipe"></my-recipe-list-item>
     </div>
 </template>
 
