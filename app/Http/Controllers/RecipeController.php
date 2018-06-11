@@ -14,7 +14,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return Recipe::all();
+        return view('recipe.index', [
+            'recipes' => Recipe::with('thumbnail', 'lede')->orderBy('created_at', 'desc')->take(50)->get()
+        ]);
     }
 
     /**

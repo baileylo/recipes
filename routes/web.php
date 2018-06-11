@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'RecipeController@index')->name('home');
 
 
 // Authentication Routes...
@@ -36,5 +36,3 @@ Route::post('my-recipes/add', 'UserRecipeController@store');
 Route::delete('my-recipes/{recipe}', 'UserRecipeController@delete')->name('recipes.delete');
 Route::get('my-recipes/{recipe}/edit', 'UserRecipeController@edit')->name('recipes.edit');
 Route::post('my-recipes/{recipe}/edit', 'UserRecipeController@update');
-
-Route::get('/home', 'HomeController@index')->name('home');
