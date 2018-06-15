@@ -47318,8 +47318,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -47346,50 +47344,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-lg-4" }, [
-    _c("div", { staticClass: "card", staticStyle: { "max-width": "18rem" } }, [
-      _vm.recipe.image_url
-        ? _c("img", {
-            staticClass: "card-img-top",
-            attrs: { src: _vm.recipe.image_url, alt: _vm.recipe.title }
-          })
-        : _c("div", {
-            staticStyle: {
-              width: "100%",
-              height: "0",
-              "padding-top": "75%",
-              background: "#ccc"
-            }
-          }),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-text" }, [
-          _c("a", {
-            attrs: { href: this.viewUrl, name: _vm.recipe.title },
-            domProps: { textContent: _vm._s(_vm.recipe.title) }
-          })
-        ])
+  return _c("div", { staticClass: "card" }, [
+    _vm.recipe.image_url
+      ? _c("img", {
+          staticClass: "card-img-top",
+          attrs: { src: _vm.recipe.image_url, alt: _vm.recipe.title }
+        })
+      : _c("div", {
+          staticStyle: {
+            width: "100%",
+            height: "0",
+            "padding-top": "75%",
+            background: "#ccc"
+          }
+        }),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-text" }, [
+        _c("a", {
+          attrs: { href: this.viewUrl, name: _vm.recipe.title },
+          domProps: { textContent: _vm._s(_vm.recipe.title) }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-footer text-right" }, [
+      _c("small", { staticClass: "text-muted" }, [
+        _c("a", { attrs: { href: this.editUrl } }, [_vm._v("Edit")])
       ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-footer text-right" }, [
-        _c("small", { staticClass: "text-muted" }, [
-          _c("a", { attrs: { href: this.editUrl } }, [_vm._v("Edit")])
-        ]),
-        _vm._v("\n            |\n            "),
-        _c("small", { staticClass: "text-muted" }, [
-          _c(
-            "a",
-            {
-              attrs: { href: "#", title: _vm.recipe.title },
-              on: {
-                click: function($event) {
-                  _vm.$emit("deleteRecipe", _vm.recipe)
-                }
+      _vm._v("\n        |\n        "),
+      _c("small", { staticClass: "text-muted" }, [
+        _c(
+          "a",
+          {
+            attrs: { href: "#", title: _vm.recipe.title },
+            on: {
+              click: function($event) {
+                _vm.$emit("deleteRecipe", _vm.recipe)
               }
-            },
-            [_vm._v("Delete")]
-          )
-        ])
+            }
+          },
+          [_vm._v("Delete")]
+        )
       ])
     ])
   ])
@@ -47467,8 +47463,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -47511,18 +47505,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.recipeGroups, function(recipes) {
-      return _c(
-        "div",
-        { staticClass: "row" },
-        _vm._l(recipes, function(recipe) {
-          return _c("my-recipe-list-item", {
-            key: recipe.id,
-            attrs: { recipe: recipe },
-            on: { deleteRecipe: _vm.removeRecipe }
-          })
-        })
-      )
+    { staticClass: "card-columns" },
+    _vm._l(_vm.recipes, function(recipe) {
+      return _c("my-recipe-list-item", {
+        key: recipe.id,
+        attrs: { recipe: recipe },
+        on: { deleteRecipe: _vm.removeRecipe }
+      })
     })
   )
 }

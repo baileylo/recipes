@@ -16,7 +16,7 @@
             </div>
     </header>
     <section class="container-fluid recipe-view-highlight" style="background: white;border-top-width: 2px; border-bottom-width: 2px; border-color: #fff">
-        <div class="row pb-3">
+        <div class="row p-3">
             <div class="col-lg-4" style="text-align: center">
                 <h1>{{ $recipe->serves }}</h1>
                 <small>serves</small>
@@ -32,16 +32,23 @@
         </div>
     </section>
     <section class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row mt-5">
+            <div class="col-md-3">
                 <h5>Ingredients</h5>
-                {!! nl2br($recipe->ingredients) !!}
+                <ol class="list-unstyled">
+                @foreach (explode("\n", $recipe->ingredients) as $ingredient)
+                    <li class="pb-2">{{ $ingredient }}</li>
+                @endforeach
+                </ol>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-1"></div>
+            <div class="col-md-7">
                 <h5>What to do?</h5>
-                {!! nl2br($recipe->directions) !!}
+                <article class="lead">
+                    {!! nl2br($recipe->directions) !!}
+                </article>
+
             </div>
         </div>
     </section>
-    </div>
 @endsection

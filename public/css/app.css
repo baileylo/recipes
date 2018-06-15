@@ -14165,13 +14165,31 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
+.top-nav {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.recipe-view-highlight {
+.card-recipe {
+  border-width: 0;
+}
+
+.card-recipe .card-body,
+.card-recipe .card-footer {
+  padding: .5rem;
+}
+
+.card-recipe .card-body {
+  font-size: 1.125rem;
+}
+
+.card-recipe .card-footer {
+  border-top-width: 0;
+  background-color: #fff;
+}
+
+.recipe-view-highlight a {
   background: white;
   margin-bottom: 40px;
   padding: 15px 15px 0 3px;

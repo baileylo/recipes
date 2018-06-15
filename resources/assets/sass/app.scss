@@ -16,7 +16,24 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.recipe-view-highlight {
+.card-recipe {
+  .card-body, .card-footer {
+    padding: .5rem;
+  }
+
+  .card-body {
+    font-size: $font-size-lg;
+  }
+
+  .card-footer {
+    border-top-width: 0;
+    background-color: $white;
+  }
+
+  border-width: 0;
+}
+
+.recipe-view-highlight a {
   background: $body-bg-highlight;
   margin-bottom: 40px;
   padding: 15px 15px 0 3px;

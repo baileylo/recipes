@@ -24,16 +24,28 @@
             <div class="col-lg-12">
                 <div class="card-columns">
                     @foreach($recipes as $recipe)
-                    <div class="card">
+                    <div class="card card-recipe">
                         @if ($recipe->image_url)
-                            <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->title }}" />
+                            <a href="{{ route('recipes.show', $recipe) }}" name="{{ $recipe->title }}">
+                                <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->title }}" />
+                            </a>
                         @else
-                            <div style="width: 100%; height: 0; padding-top:75%; background: #ccc"></div>
+                            <a href="{{ route('recipes.show', $recipe) }}" name="{{ $recipe->title }}">
+                                <div style="width: 100%; height: 0; padding-top:75%; background: #ccc"></div>
+                            </a>
                         @endif
                         <div class="card-body">
-                            <h5 class="card-text">
-                                <a href="#" name="{{ $recipe->title }}">{{ $recipe->title }}</a>
-                            </h5>
+                            <p class="card-text">
+                                <a href="{{ route('recipes.show', $recipe) }}" name="{{ $recipe->title }}" class="text-muted">{{ $recipe->title }}</a>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted text-right">
+                            @if ($recipe->serves)
+                                {{ $recipe->serves }} <i class="fas fa-users"></i>
+                            @endif
+                            @if ($recipe->oven_temperature)
+                                {{ $recipe->oven_temperature }} <i class="fas fa-thermometer-three-quarters"></i>
+                            @endif
                         </div>
                     </div>
                     @endforeach
