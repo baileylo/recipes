@@ -162,6 +162,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\GlideServiceProvider::class,
+        App\Providers\ControllerServiceProvider::class,
 
     ],
 
