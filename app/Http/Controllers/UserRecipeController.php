@@ -9,6 +9,17 @@ use Illuminate\Http\Response;
 
 class UserRecipeController extends Controller
 {
+    private const RECIPE_RULES = [
+        'title'            => 'string|required|max:255',
+        'source'           => 'string|nullable|max:255',
+        'serves'           => 'integer|nullable|min:1',
+        'cooking_time'     => 'string|nullable|max:255',
+        'oven_temperature' => 'integer|nullable|min:1',
+        'ingredients'      => 'string|required',
+        'directions'       => 'string|required',
+        'image'            => 'image'
+    ];
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -56,16 +67,7 @@ class UserRecipeController extends Controller
             abort(403, 'You don\'t have access to this page.');
         }
 
-        $this->validate($request, [
-            'title'            => 'string|required|max:255',
-            'source'           => 'string|nullable|max:255',
-            'serves'           => 'integer|min:1',
-            'cooking_time'     => 'string|nullable|max:255',
-            'oven_temperature' => 'integer|nullable|min:1',
-            'ingredients'      => 'string|required',
-            'directions'       => 'string|required',
-            'image'            => 'image'
-        ]);
+        $this->validate($request, self::RECIPE_RULES);
 
         if ($request->hasFile('image')) {
             $image = Image::createFromUpload($request->file('image'), $request->user());
@@ -96,16 +98,7 @@ class UserRecipeController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title'            => 'string|required|max:255',
-            'source'           => 'string|nullable|max:255',
-            'serves'           => 'integer|nullable|min:1',
-            'cooking_time'     => 'string|nullable|max:255',
-            'oven_temperature' => 'integer|nullable|min:1',
-            'ingredients'      => 'string|required',
-            'directions'       => 'string|required',
-            'image'            => 'image'
-        ]);
+        $this->validate($request, self::RECIPE_RULES);
 
         /** @var \App\User $user */
         /** @var \App\Recipe $recipe */
