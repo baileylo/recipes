@@ -5,6 +5,7 @@
 @section('content')
     <header class="container-fluid">
             <div class="row">
+                @if ((string)$recipe->image_url)
                 <div class="col-md-12 permalink-lede-image" style="background-image: url({{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop')->dpr(2) }});" >
                     <div style="position: absolute; bottom: 0;background: black;opacity: .7;width:100%;color:white;text-align: right;padding-right:15px">
                         <h1>{{ $recipe->title }}</h1>
@@ -13,21 +14,30 @@
                         @endif
                     </div>
                 </div>
+                @else
+                <div class="col-md-12 pt-3">
+                    <h1>{{ $recipe->title }}</h1>
+                    @if ($recipe->source)
+                        <p>From: <span>{{ $recipe->source }}</span></p>
+                    @endif
+                </div>
+                @endif
+                </div>
             </div>
     </header>
     <section class="container-fluid recipe-view-highlight" style="background: white;border-top-width: 2px; border-bottom-width: 2px; border-color: #fff">
         <div class="row p-3">
             <div class="col-lg-4" style="text-align: center">
-                <h1>{{ $recipe->serves }}</h1>
+                <h1>{{ $recipe->serves?: '—' }}</h1>
                 <small>serves</small>
             </div>
             <div class="col-lg-4" style="text-align: center">
-                <h1>{{ $recipe->cooking_time }}</h1>
+                <h1>{{ $recipe->cooking_time?: '—' }}</h1>
                 <small>cooking time</small>
             </div>
             <div class="col-lg-4" style="text-align: center">
                 <h1>{{ $recipe->oven_temperature?: '—' }}</h1>
-                <small>Prehead Oven</small>
+                <small>Preheat Oven</small>
             </div>
         </div>
     </section>
@@ -43,7 +53,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-7">
-                <h5>What to do?</h5>
+                <h5>Directions</h5>
                 <article class="lead">
                     {!! nl2br($recipe->directions) !!}
                 </article>
