@@ -25,7 +25,7 @@
                 <div class="card-columns">
                     @foreach($recipes as $recipe)
                     <div class="card card-recipe">
-                        @if ($recipe->image_url)
+                        @if ($recipe->image_url instanceof \App\Service\RenderableImage)
                             <a href="{{ route('recipes.show', $recipe) }}" name="{{ $recipe->title }}">
                                 <img class="card-img-top" src="{{ $recipe->image_url }}" alt="{{ $recipe->title }}" />
                             </a>
