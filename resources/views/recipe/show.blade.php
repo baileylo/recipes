@@ -6,14 +6,16 @@
     <header class="container-fluid">
             <div class="row">
                 @if ((string)$recipe->image_url)
-                <div class="col-md-12 permalink-lede-image" style="background-image: url({{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop')->dpr(2) }});" >
-                    <div style="position: absolute; bottom: 0;background: black;opacity: .7;width:100%;color:white;text-align: right;padding-right:15px">
-                        <h1>{{ $recipe->title }}</h1>
-                        @if ($recipe->source)
-                            <p>From: <span>{{ $recipe->source }}</span></p>
-                        @endif
+                    <div class="permalink-lede-image">
+                        <div class="col-md-12" style="background-image: url({{ config('app.url') }}/{{ $recipe->image_url->w(1247)->h(701)->fit('crop')->dpr(2) }});" >
+                            <div>
+                                <h1>{{ $recipe->title }}</h1>
+                                @if ($recipe->source)
+                                    <p>From: <span>{{ $recipe->source }}</span></p>
+                                @endif
+                            </div>
+                        </div>
                     </div>
-                </div>
                 @else
                 <div class="col-md-12 pt-3">
                     <h1>{{ $recipe->title }}</h1>

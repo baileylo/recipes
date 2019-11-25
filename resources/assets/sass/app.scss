@@ -40,11 +40,23 @@
 }
 
 .permalink-lede-image {
-  background-size: cover;
+  height: 90vh;
   width: 100%;
-  height: 0;
-  padding: 70% 0 0 0;
-  position: relative;
+  > div {
+    background-size: cover;
+    width: 100%;
+    height: 100% !important;
+    padding: 0;
+    position: relative;
+    > div {
+      position: absolute;;
+      bottom: 0;
+      background: black;
+      opacity: .7;
+      width: 100%;
+      color: white;
+    }
+  }
 }
 
 .image-upload-target {
